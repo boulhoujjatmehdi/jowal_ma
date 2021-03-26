@@ -99,6 +99,7 @@
 
 
     }
+    addlayerr();
   </script>
 @show  
     

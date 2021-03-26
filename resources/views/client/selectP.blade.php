@@ -23,6 +23,16 @@
 
 
     <link href="{{asset('css/style.css')}}" rel="stylesheet" />
+
+    <!--cursor icon-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+
+    <link rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css">
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="https://cdn.rawgit.com/jwarby/jquery-awesome-cursor/master/dist/jquery.awesome-cursor.min.js"></script></pre>
+    <!--cursor icon end-->
+
+    <script></script>
     
 @endsection
 
@@ -32,10 +42,10 @@
 @endsection
 
 @section('content')
-<div  class="d-flex"  style="width: 100%; height:100%; background-color:red;">
-    <div  id="mapContainer" class=" w-100 flex-fill ">
+<div  class="d-flex"  style="width: 100%; height:95%; background-color:red;">
+    <div  id="mapContainer" class="position-relative w-100 flex-fill ">
 
-
+      
 
     <script>
       // Initialize the platform object:
@@ -80,53 +90,46 @@
 
 
     </script>
-    <script>
-      var dataPoints = [];
-      dataPoints.push(new H.clustering.DataPoint(30.374804498004796, -9.570148128462348));
-      dataPoints.push(new H.clustering.DataPoint(30.374758682368622, -9.569158099030417));
-      dataPoints.push(new H.clustering.DataPoint(30.373926826906377, -9.570609537338553));
-      dataPoints.push(new H.clustering.DataPoint(30.373591095043388, -9.56801311997821));
-      dataPoints.push(new H.clustering.DataPoint(30.372109360022414, -9.573562513645065));
-      dataPoints.push(new H.clustering.DataPoint(30.372346588108638, -9.573058241617527));
-      dataPoints.push(new H.clustering.DataPoint(30.372083078468826, -9.57249561346296));
-      dataPoints.push(new H.clustering.DataPoint(30.371472842886700, -9.576020077062138));
-      dataPoints.push(new H.clustering.DataPoint(30.371486711919374, -9.57674345611801));
-      dataPoints.push(new H.clustering.DataPoint(30.370970089123684, -9.575493617860364));
-      dataPoints.push(new H.clustering.DataPoint(30.373393257723710, -9.578846794401326));
-      dataPoints.push(new H.clustering.DataPoint(30.373128316663653, -9.57887389049992));      
 
-
-
-
-
-
-      /**
-       * Assuming that 'dataPoints' and 'map' 
-       * is initialized and available, create a data provider:
-       */
-
-      var clusteredDataProvider = new H.clustering.Provider(dataPoints, {
+   
         
-        clusteringOptions: {
-          eps: 100,
-          minWeight: 7
-        }
-      });
-      // Create a layer that includes the data provider and its data points: 
-      var layer = new H.map.layer.ObjectLayer(clusteredDataProvider);
-
-      // Add the layer to the map:
-      map.addLayer(layer);
-    </script>
-        
-
+<div class="position-absolute">
+  <button class="btn btn-danger  " id="btn1" onclick="cursor_in()"><i class="fas fa-map-marker-alt"></i> add point </button>
+  <button class="btn btn-danger  " id="btn1" onclick="cursor_out()"><i class="fas fa-map-marker-alt"> save</i></button>
+</div>
     </div>
 
-    <aside class="flex-fill bg-primary" style="font-size: 13px">
-        <button class="btn btn-danger  " >add markup</button>
+    <aside id="btn2" class="flex-fill bg-warning" style="font-size: 13px">
+
 
     </aside>
 </div>
+    <script> 
+      function cursor_in(){
+        document.getElementById("mapContainer").style.cursor = "url('{{asset('icons/map-pin.svg')}}')12 24, auto";
+        var cordd = setUpClickListener(map);
+        console.log(cordd);
+      }
+      function cursor_out(){
+        document.getElementById("mapContainer").style.cursor = "auto";
+      }
+
+    </script>
     <script type="text/javascript" src='{{asset('js/demo.js')}}'></script>
+    <div aria-disabled="true" >
+      <script>
+        
+
+
+      </script>
+       <script>
+        /**
+         * Assuming that 'dataPoints' and 'map' 
+         * is initialized and available, create a data provider:
+         */
+  
+        
+      </script>
+    </div>
 @endsection
 
