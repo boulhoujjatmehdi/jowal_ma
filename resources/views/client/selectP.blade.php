@@ -42,8 +42,8 @@
 @endsection
 
 @section('content')
-<div  class="d-flex"  style="width: 100%; height:95%; background-color:red;">
-    <div  id="mapContainer" class="position-relative w-100 flex-fill ">
+<div  class="d-flex bg-light"  style="width: 100%; height:95%; ">
+    <div  id="mapContainer" class="position-relative w-100  ">
 
       
 
@@ -71,16 +71,11 @@
 
       // Create the default UI:
       var ui = H.ui.UI.createDefault(map, maptypes);
-      ui.getControl('zoom').setDisabled(false)
+      ui.getControl('mapsettings').setDisabled(true);
+
 
       // Enable the event system on the map instance:
       var mapEvents = new H.mapevents.MapEvents(map);
-
-      // Add event listeners:
-      map.addEventListener('tap', function(evt) {
-          // Log 'tap' and 'mouse' events:
-          console.log(evt.type, evt.currentPointer.type);
-      });
 
       // Instantiate the default behavior, providing the mapEvents object:
       var behavior = new H.mapevents.Behavior(mapEvents);
@@ -93,7 +88,7 @@
 
    
         
-<div class="position-absolute">
+<div class="position-absolute" style="top:.3rem;left:.5rem;">
   <button class="btn btn-danger  " id="btn1" onclick="cursor_in()"><i class="fas fa-map-marker-alt"></i> add point </button>
   <button class="btn btn-danger  " id="btn1" onclick="cursor_out()"><i class="fas fa-map-marker-alt"> save</i></button>
 </div>

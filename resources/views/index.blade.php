@@ -49,18 +49,29 @@
       <div>
         <h3 class="float-md-start mb-0 ms-5">Cover</h3>
         <nav class="nav nav-masthead justify-content-center float-md-end me-5">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-          <a class="nav-link" href="# ">Contact</a>
-          <a class="nav-link" href="#">Login</a>
-          <a class="nav-link" href="#">Sign up</a>
+
+          
+          @if (Auth::user())
+          <form id="LogOutForm" action="{{route('logout')}}" method="post">@csrf</form><br>
+            <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
+            <a class="nav-link" href="">Contact</a>
+            <a class="nav-link" href="{{route('profile.show')}}">Profil</a>          
+            <button form="LogOutForm" class="nav-link" type="sumbit" style="border-top: 0; border-left:0; border-right:0;">Logout</button>
+          @else
+            <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
+            <a class="nav-link" href="">Contact</a>
+            <a class="nav-link" href="{{route('login')}}">Login</a>
+            <a class="nav-link" href="{{route('register')}}">Sign up</a>
+          @endif
+
         </nav>
       </div>
     </header>
 @show
   
 @section("content")
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <main class="px-3">
+<div class=" d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <main class="px-3 m-auto" style="max-width:42rem; align-self:center;">
     <h1>7oooooooooooot Ha Semta.</h1>
     <p class="lead">If you need somme thing from the hawkers, you can use our website to facilitate the life .</p>
     <p class="d-flex lead bg-light rounded " >
@@ -99,7 +110,7 @@
 
 
     }
-    addlayerr();
+
   </script>
 @show  
     

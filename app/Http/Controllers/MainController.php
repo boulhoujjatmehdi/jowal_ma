@@ -9,4 +9,7 @@ class MainController extends Controller
     public function index($city , $need){
         return view('client.selectP');    
     }
+    public function client(){
+        return 0;
+    }
 }

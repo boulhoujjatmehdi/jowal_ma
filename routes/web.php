@@ -20,12 +20,12 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('/');
 })->name('dashboard');
 
-Route::resource('cordinates' , CordinateController::class);
+Route::resource('cordinates' , CordinateController::class)->only(['index']);
 Route::view('/home'  , 'index');
-
+Route::resource('Main' , MainController::class)->only(['index' , 'create']);
 Route::get('search/{city}/{need}', [MainController::class , 'index' ] );
 
 Route::view('lay' , 'client.selectP');
