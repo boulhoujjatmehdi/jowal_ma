@@ -30,3 +30,5 @@ Route::get('search/{city}/{need}', [MainController::class , 'index' ] );
 
 Route::view('lay' , 'client.selectP');
 Route::view('layout' , 'client.child');
+
+Route::get('map/client/{city}/{need}' ,[MainController::class , 'mapPick'] );
