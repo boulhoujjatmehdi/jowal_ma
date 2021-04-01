@@ -2,6 +2,7 @@
 
 @section('head')
     @parent
+    <!-- -------------------------------------------------------- -->
     <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
     <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
        type="text/javascript" charset="utf-8"></script>
@@ -17,7 +18,7 @@
      type="text/javascript" charset="utf-8"></script>
     
        
-    <!-- Bootstrap css -->
+    
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 

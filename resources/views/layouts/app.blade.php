@@ -1,4 +1,66 @@
-<!DOCTYPE html>
+@extends('index')
+@section('head')
+        
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}" defer></script>
+       @parent
+       @livewireStyles
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section('content')
+    {{ $slot }}
+@endsection
+
+
+        @stack('modals')
+        
+        @livewireScripts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -43,4 +105,4 @@
 
         @livewireScripts
     </body>
-</html>
+</html> --}}

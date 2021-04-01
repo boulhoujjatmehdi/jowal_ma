@@ -1,15 +1,5 @@
-@extends('client.lay')
+@extends('index')
 
-@section('title', 'Page Title')
-
-@section('sidebar')
-   
-    @parent
-    <p>This is appended to the master sidebar.</p>
-     
-@endsection
-
-@section('content')
-@parent
-    <p>This is my body content.</p>
+@section('head')
+    lkjlkjklj;ljl;kjl;kj;lkjlkjakjfkjskljfkja
 @endsection

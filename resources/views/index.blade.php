@@ -43,25 +43,41 @@
     <!-- Custom styles for this template -->
     <link href="/css/cover.css" rel="stylesheet">
   </head>
-  <body class="d-block h-100 text-center text-white bg-dark">
+
+  <body class="d-block h-100  text-center text-white bg-dark " style="box-shadow:none;">
 @section('header')
     <header class="mb-auto w-100 ">
       <div>
-        <h3 class="float-md-start mb-0 ms-5">Cover</h3>
+        <a href="{{route('home')}}" class=" text-light float-md-start d-flex mb-0 ms-5 " style="height:32px;"><img class="h-8" src="{{asset('images/jowal_ma_logo.png')}}" > 
+        <h3 class=" ms-3 float-md-start">JowaL</h3></a>
+       
         <nav class="nav nav-masthead justify-content-center float-md-end me-5">
-
+          @php
+              $activ_1='' ; $activ_2='' ; $activ_3='' ;$activ_5=''; $activ_4='';
+              if (Route::is('home')){
+                $activ_1='active';
+              }elseif (Route::is('contact')) {
+                $activ_2='active';
+              }elseif (Route::is('profile.show')) {
+                $activ_3='active';
+              }elseif (Route::is('login')) {
+                $activ_4='active';
+              }elseif (Route::is('register')) {
+                $activ_5='active';
+              }
+          @endphp
           
           @if (Auth::user())
           <form id="LogOutForm" action="{{route('logout')}}" method="post">@csrf</form><br>
-            <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
-            <a class="nav-link" href="">Contact</a>
-            <a class="nav-link" href="{{route('profile.show')}}">Profil</a>          
+            <a class="nav-link {{$activ_1}}" aria-current="page" href="{{route('home')}}">Home</a>
+            <a class="nav-link {{$activ_2}}" href="">Contact</a>
+            <a class="nav-link {{$activ_3}}" href="{{route('profile.show')}}">Profil</a>          
             <button form="LogOutForm" class="nav-link" type="sumbit" style="border-top: 0; border-left:0; border-right:0;">Logout</button>
           @else
-            <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
-            <a class="nav-link" href="">Contact</a>
-            <a class="nav-link" href="{{route('login')}}">Login</a>
-            <a class="nav-link" href="{{route('register')}}">Sign up</a>
+            <a class="nav-link {{$activ_1}}" if aria-current="page" href="{{url('/')}}">Home</a>
+            <a class="nav-link {{$activ_2}}" href="">Contact</a>
+            <a class="nav-link {{$activ_4}}" href="{{route('login')}}">Login</a>
+            <a class="nav-link {{$activ_5}}" href="{{route('register')}}">Sign up</a>
           @endif
 
         </nav>
