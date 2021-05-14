@@ -3,14 +3,14 @@
 
 
     <button class="btn btn-danger  " id="newButton" onclick="cursor_in()"><i class="fas fa-map-marker-alt"></i> {{$btn1}} </button>
-    <input id="cordlng" type="text" wire:model='cordlng'style='display:;' value="{{$cordlng}}" editable='false'>
+    <input id="cordlng" type="text" wire:model='cordlng'style='display:none;' value="{{$cordlng}}" editable='false'>
     <input id="needtype" type="text" wire:model='needtype'style='display:none;' value="{{$needtype}}" editable='false'>
-    <input id="cordlat" type="text" wire:model='cordlat' style='display:;' value="{{$cordlat}}" editable='false'>
+    <input id="cordlat" type="text" wire:model='cordlat' style='display:none;' value="{{$cordlat}}" editable='false'>
     <button class="btn btn-danger  " id="saveButton" wire:click.prevent="updateCoord"  >
         
         <i class="fas fa-map-marker-alt"></i> save this point </button>
 
-    <button onclick="addDataPoint()">kkk</button>
+
 
     @if(Session::has('savedOrNot'))
         <h5 class="mt-1
