@@ -18,6 +18,11 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+
+    public function cordinate(){
+        return $this->hasMany(Cordinate::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,6 +31,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'type',
+        'city',
         'password',
     ];
 

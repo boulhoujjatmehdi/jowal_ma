@@ -35,7 +35,7 @@ class CordinateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

@@ -15,6 +15,28 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="type" value="{{ __('Type') }}" />
+                <select id="type" name="type"value="old('type')" class="form-select text-black border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" aria-label="Default select example" required>
+                    <option value="" selected>Select account type </option>
+                    <option value="client">Client</option>
+                    <option value="seller">Seller</option>
+                </select>
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="city" value="{{ __('City') }}" />
+                <select id="city" name="city" value="old('city')"  class="w-full text-black border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" aria-label="Default select example" id="cities" required>
+                    <option value="">Select your city</option>
+                    <option value="agadir">Agadir</option>
+                    <option value="casablanca">Casablanca</option>
+                    <option value="fes">Fes</option>
+                    <option value="marrakech">Marrakech</option>
+                    <option value="mekness">Mekness</option>
+                    <option value="rabat">Rabat</option>
+                  </select>
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>

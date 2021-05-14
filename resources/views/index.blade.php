@@ -44,11 +44,11 @@
     <link href="/css/cover.css" rel="stylesheet">
   </head>
 
-  <body class="d-block h-100  text-center text-white bg-dark " style="box-shadow:none;">
+  <body class="d-block h-100  text-center text-white bg-dark " style="box-shadow:none;" onload="@yield('onload')">
 @section('header')
     <header class="mb-auto w-100 ">
       <div>
-        <a href="{{route('home')}}" class=" text-light float-md-start d-flex mb-0 ms-5 " style="height:32px;"><img class="h-8" src="{{asset('images/jowal_ma_logo.png')}}" > 
+        <a href="{{route('home')}}" class=" text-light float-md-start d-flex mb-0 ms-5 w-20 " style="height:32px;"><img class="h-8" src=" {{asset('images/jowal_ma_logo.png')}}" > 
         <h3 class=" ms-3 float-md-start">JowaL</h3></a>
        
         <nav class="nav nav-masthead justify-content-center float-md-end me-5">
@@ -68,6 +68,7 @@
           @endphp
           
           @if (Auth::user())
+          
           <form id="LogOutForm" action="{{route('logout')}}" method="post">@csrf</form><br>
             <a class="nav-link {{$activ_1}}" aria-current="page" href="{{route('home')}}">Home</a>
             <a class="nav-link {{$activ_2}}" href="">Contact</a>
@@ -91,8 +92,8 @@
     <h1>7oooooooooooot Ha Semta.</h1>
     <p class="lead">If you need somme thing from the hawkers, you can use our website to facilitate the life .</p>
     <p class="d-flex lead bg-light rounded " >
-    <select class="form-select rounded border-0" aria-label="Default select example" id="cities" >
-      <option selected>select your city</option>
+    <select class="form-select rounded border-0" aria-label="Default select example" id="cities" required>
+      <option value="">select your city</option>
       <option value="Agadir">Agadir</option>
       <option value="Casablanca">Casablanca</option>
       <option value="Fes">Fes</option>
@@ -100,8 +101,8 @@
       <option value="Mekness">Mekness</option>
       <option value="Rabat">Rabat</option>
     </select>
-    <select class="form-select rounded-0" aria-label="Default select example" id="needs">
-      <option selected>select what you need</option>
+    <select class="form-select rounded-0" aria-label="Default select example" id="needs" required>
+      <option value="">select what you need</option>
       <option value="Fishes">Fishes</option>
       <option value="Cleaning">Cleaning Products</option>
     </select>
@@ -122,9 +123,11 @@
     function f1(){
       var city = document.getElementById('cities').value;
       var need = document.getElementById('needs').value;
-      document.getElementById('url_send').href =  '{{ url('search')}}/' + city + '/' + need;
-
-
+      if(city==""){
+        alert('select city'); return }
+      if(need==""){
+        alert('select your need'); return }
+      document.getElementById('url_send').href =  '{{ url('map/client')}}/' + city + '/' + need;      
     }
 
   </script>

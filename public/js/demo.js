@@ -27,10 +27,7 @@
     var coord
     map.addEventListener('tap', function (evt) {
       coord = map.screenToGeo(evt.currentPointer.viewportX , evt.currentPointer.viewportY);
-      // logEvent('Clicked at ' + Math.abs(coord.lat.toFixed(4)) + ((coord.lat > 0) ? 'N' : 'S') +' ' + Math.abs(coord.lng.toFixed(4)) +
-      //      ((coord.lng > 0) ? 'E' : 'W'));
-      // dataPoints.push(new H.clustering.DataPoint(coord.lat + ', ' + coord.lng));
-      // console.log(dataPoints.length + 'kkkkk ' + coord.lat + ', ' + coord.lng);
+
       
       // console.log(dataPoints[dataPoints.length-1]);
       addDataPoint(coord.lat , coord.lng);

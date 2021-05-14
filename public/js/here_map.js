@@ -1,60 +1,71 @@
+function onloadd(){
+  document.getElementById('saveButton').disabled = true;
+}
 
-
-/**
- * An event listener is added to listen to tap events on the map.
- * Clicking on the map displays an alert box containing the latitude and longitude
- * of the location pressed.
- * @param  {H.Map} map      A HERE Map instance within the application
- */
- var dataPoints = [];
-
-
- function setUpClickListener(map) {
+//  var dataPoints = [];
+var lastCoord = [];
+var prevLayer;
+function setUpClickListener(map) {
 
     var coord
     map.addEventListener('tap', function (evt) {
       coord = map.screenToGeo(evt.currentPointer.viewportX , evt.currentPointer.viewportY);
+      document.getElementById('cordlng').value = coord.lat;
+      document.getElementById("cordlng").dispatchEvent(new Event('input'));
+      document.getElementById('cordlat').value = coord.lng;
+      document.getElementById("cordlat").dispatchEvent(new Event('input'));
       addDataPoint(coord.lat , coord.lng);
       this.removeEventListener('tap' , arguments.callee);
-      document.getElementById("mapContainer").style.cursor = "auto"; 
-      document.getElementById('btn2').style.display = 'inline';
-    });
-    
+      document.getElementById("mapContainer").style.cursor = "auto";
+      
+    });    
   }
+
+  
+
   function addDataPoint(co , xo){
+    co = document.getElementById('cordlng').value;
+    xo = document.getElementById('cordlat').value;
     map.removeLayer();
     var x = [(new H.clustering.DataPoint(co , xo))];
-    console.log(x);
-
-    var clusteredDataProvider = new H.clustering.Provider(x , {
-          
-    });
+    lastCoord = [co , xo]
+    
+    console.log(lastCoord);    
+    var clusteredDataProvider = new H.clustering.Provider(x);
     // Create a layer that includes the data provider and its data points: 
     var layer = new H.map.layer.ObjectLayer(clusteredDataProvider);
+    //change the value of cordinates input
+    // document.addEventListener('livewire:load',function (){ document.getElementById('cordlng').value = lastCoord[0] });
+
+
+
 
     // Add the layer to the map:
-    
+    map.removeLayer(prevLayer);
     map.addLayer(layer);
+    prevLayer = layer;
+    document.getElementById('saveButton').disabled = false;
+    document.getElementById('newButton').innerHTML ='new point';
   }
-
-  function  addlayerr(){
-        var clusteredDataProvider = new H.clustering.Provider(dataPoints, {
+addDataPoint();
+  // function  addlayerr(){
+  //     var clusteredDataProvider = new H.clustering.Provider(dataPoints, {
           
-      clusteringOptions: {
-        eps: 100,
-        minWeight: 7
-      }
-    });
-    // Create a layer that includes the data provider and its data points: 
-    var layer = new H.map.layer.ObjectLayer(clusteredDataProvider);
+  //     clusteringOptions: {
+  //       eps: 100,
+  //       minWeight: 7
+  //     }
+  //   });
+  //   // Create a layer that includes the data provider and its data points: 
+  //   var layer = new H.map.layer.ObjectLayer(clusteredDataProvider);
 
-    // Add the layer to the map:
+  //   // Add the layer to the map:
     
-    map.addLayer(layer);
-  }
+  //   map.addLayer(layer);
+  // }
 
 
-  addlayerr();
+  // addlayerr();
   
   // Helper for logging events
   // function logEvent(str) {

@@ -16,9 +16,10 @@ class CreateCordinatesTable extends Migration
         Schema::create('cordinates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('log');
+            $table->string('lng');
             $table->string('lat');
-            $table->date('date');
+            $table->string('needType');
+            $table->string('userType');
             $table->timestamps();
         });
     }
